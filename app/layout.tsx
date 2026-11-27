@@ -17,9 +17,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "110 PARTS | Premium Car Parts",
+  title: "110 PARTS | New, Second-hand Parts and Body Panels",
   description:
-    "Premium quality car parts, reliable performance, and everything your vehicle needs in one place. Brake systems, batteries, filters, spark plugs, and more from 110 PARTS, Meek Street, Plot 4, OL2 6HL.",
+    "New car parts, checked second-hand parts, and body panels from 110 PARTS. Bumpers, bonnets, wings, brakes, batteries, and more at Meek Street, Plot 4, OL2 6HL.",
   icons: {
     icon: "/images/logo.png",
     apple: "/images/logo.png",
@@ -37,7 +37,7 @@ const jsonLd = {
   "@type": "AutoPartsStore",
   name: "110 PARTS",
   description:
-    "Premium quality car parts, reliable performance, and everything your vehicle needs in one place.",
+    "New car parts, checked second-hand parts, and body panels, including bumpers, bonnets, and wings.",
   telephone: ["+441614254420", "+447722566832"],
   address: {
     "@type": "PostalAddress",

@@ -20,7 +20,7 @@ export function Footer() {
             className="h-20 w-auto bg-black sm:h-24"
           />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ash">
-            Premium car parts for a reliable drive. The right component, confirmed before you buy.
+            New parts, second-hand parts, and body panels. The right component, confirmed before you buy.
           </p>
           <div className="mt-5 flex gap-2">
             <Social href={whatsappLink()} label="WhatsApp">

@@ -1,4 +1,7 @@
 const items = [
+  "New Parts",
+  "Second-hand Parts",
+  "Body Panels",
   "Brake Systems",
   "Car Batteries",
   "Engine Parts",

@@ -30,6 +30,7 @@ export const nav = [
 ] as const;
 
 export const categoryIds = [
+  "panels",
   "brakes",
   "batteries",
   "engine",
@@ -38,6 +39,8 @@ export const categoryIds = [
   "suspension",
   "accessories",
 ] as const;
+
+export type Stock = "New" | "Second-hand" | "Either";
 
 export type CategoryId = (typeof categoryIds)[number];
 export type CatalogFilter = CategoryId | "all";
@@ -49,6 +52,13 @@ export const categories: {
   image: string;
   imageAlt: string;
 }[] = [
+  {
+    id: "panels",
+    name: "Body Panels",
+    blurb: "Bumpers, bonnets, wings, and doors in new and second-hand stock.",
+    image: "/images/hero.jpg",
+    imageAlt: "Car body ready for panel replacement",
+  },
   {
     id: "brakes",
     name: "Brake Systems",
@@ -102,6 +112,7 @@ export const categories: {
 
 export const filterLabels: Record<CatalogFilter, string> = {
   all: "Featured",
+  panels: "Body Panels",
   brakes: "Brake Systems",
   batteries: "Car Batteries",
   engine: "Engine Parts",
@@ -121,6 +132,7 @@ export type Product = {
   category: CategoryId;
   brands: string[] | "all";
   featured: boolean;
+  condition: Stock;
 };
 
 export const products: Product[] = [
@@ -134,6 +146,19 @@ export const products: Product[] = [
     category: "brakes",
     brands: "all",
     featured: true,
+    condition: "New",
+  },
+  {
+    id: "used-brake-discs",
+    name: "Second-hand Brake Discs",
+    description: "Checked used rotors when a sound second-hand set is the right call.",
+    price: "From £22.00",
+    image: "/images/brakes.jpg",
+    imageAlt: "Second-hand brake disc",
+    category: "brakes",
+    brands: "all",
+    featured: false,
+    condition: "Second-hand",
   },
   {
     id: "brake-pads",
@@ -145,6 +170,7 @@ export const products: Product[] = [
     category: "brakes",
     brands: "all",
     featured: false,
+    condition: "New",
   },
   {
     id: "batteries",
@@ -156,6 +182,43 @@ export const products: Product[] = [
     category: "batteries",
     brands: "all",
     featured: true,
+    condition: "New",
+  },
+  {
+    id: "bumpers",
+    name: "Front & Rear Bumpers",
+    description: "New and second-hand bumpers matched to the car, including colour-coded options on enquiry.",
+    price: "From £65.00",
+    image: "/images/hero.jpg",
+    imageAlt: "Vehicle bodywork for bumper enquiries",
+    category: "panels",
+    brands: "all",
+    featured: true,
+    condition: "Either",
+  },
+  {
+    id: "bonnets",
+    name: "Bonnets",
+    description: "Replacement bonnets, new or second-hand, checked for fit before they leave the counter.",
+    price: "From £80.00",
+    image: "/images/workshop.jpg",
+    imageAlt: "Workshop stock including body panels",
+    category: "panels",
+    brands: "all",
+    featured: true,
+    condition: "Either",
+  },
+  {
+    id: "wings",
+    name: "Wings & Doors",
+    description: "Wings, doors, and related panels for accident repair, in new and used condition.",
+    price: "From £55.00",
+    image: "/images/workshop.jpg",
+    imageAlt: "Body panels held in the workshop",
+    category: "panels",
+    brands: "all",
+    featured: true,
+    condition: "Either",
   },
   {
     id: "engine-mounts",
@@ -167,17 +230,19 @@ export const products: Product[] = [
     category: "engine",
     brands: "all",
     featured: false,
+    condition: "New",
   },
   {
     id: "engine-components",
     name: "Engine Components",
-    description: "Belts, pulleys, and service parts checked against your vehicle.",
+    description: "New service parts, plus checked second-hand components when that is the better fit.",
     price: "From £36.00",
     image: "/images/engine.jpg",
     imageAlt: "Close-up of a performance engine",
     category: "engine",
     brands: "all",
     featured: false,
+    condition: "Either",
   },
   {
     id: "oil-filters",
@@ -189,6 +254,7 @@ export const products: Product[] = [
     category: "filters",
     brands: "all",
     featured: true,
+    condition: "New",
   },
   {
     id: "air-filters",
@@ -200,6 +266,7 @@ export const products: Product[] = [
     category: "filters",
     brands: "all",
     featured: false,
+    condition: "New",
   },
   {
     id: "spark-plugs",
@@ -211,6 +278,7 @@ export const products: Product[] = [
     category: "spark",
     brands: "all",
     featured: true,
+    condition: "New",
   },
   {
     id: "struts",
@@ -222,6 +290,7 @@ export const products: Product[] = [
     category: "suspension",
     brands: ["Toyota", "Honda", "Ford", "Nissan", "Volkswagen"],
     featured: false,
+    condition: "Either",
   },
   {
     id: "steering",
@@ -233,17 +302,19 @@ export const products: Product[] = [
     category: "suspension",
     brands: ["BMW", "Audi", "Mercedes-Benz"],
     featured: false,
+    condition: "Either",
   },
   {
     id: "headlights",
     name: "Headlights",
-    description: "Clear lens assemblies that restore night visibility.",
+    description: "New and second-hand lamp units that restore night visibility.",
     price: "From £124.00",
     image: "/images/headlights.jpg",
     imageAlt: "Modern LED headlight assembly",
     category: "accessories",
     brands: ["Toyota", "Honda", "Ford", "Nissan", "Volkswagen"],
     featured: true,
+    condition: "Either",
   },
   {
     id: "performance",
@@ -255,6 +326,7 @@ export const products: Product[] = [
     category: "accessories",
     brands: ["BMW", "Audi", "Mercedes-Benz", "Volkswagen"],
     featured: true,
+    condition: "New",
   },
 ];
 
@@ -323,16 +395,16 @@ export const brands = Object.keys(garage);
 
 export const reasons = [
   {
-    title: "Premium Quality Products",
-    copy: "Parts chosen for fit, finish, and the way they behave once they are on the car.",
+    title: "New and Second-hand Parts",
+    copy: "New stock when you want it, and checked second-hand parts when a sound used component is the smarter buy.",
   },
   {
     title: "Competitive Pricing",
-    copy: "Guide prices stay clear, and the final figure is confirmed before you commit.",
+    copy: "Guide prices stay clear for both new and used parts, and the final figure is confirmed before you commit.",
   },
   {
-    title: "Wide Product Selection",
-    copy: "Brakes, batteries, engine parts, filters, plugs, suspension, lighting, and accessories.",
+    title: "Body Panels in Stock",
+    copy: "Bumpers, bonnets, wings, and doors sit alongside brakes, batteries, engine parts, filters, and lighting.",
   },
   {
     title: "Reliable Customer Support",

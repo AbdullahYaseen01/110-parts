@@ -16,6 +16,7 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [car, setCar] = useState("");
   const [part, setPart] = useState("");
+  const [condition, setCondition] = useState("Either");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
@@ -24,8 +25,9 @@ export function Contact() {
     if (!draft.nonce) return;
     setPart(draft.part);
     if (draft.car) setCar(draft.car);
+    if (draft.condition) setCondition(draft.condition);
     setSent(false);
-  }, [draft.nonce, draft.part, draft.car]);
+  }, [draft.nonce, draft.part, draft.car, draft.condition]);
 
   function enquiryText() {
     return [
@@ -35,6 +37,7 @@ export function Contact() {
       `Email: ${email.trim()}`,
       `Car: ${car.trim() || "Not specified"}`,
       `Part: ${part.trim()}`,
+      `Stock: ${condition === "Either" ? "New or second-hand" : condition}`,
       `Message: ${message.trim()}`,
     ].join("\n");
   }
@@ -73,14 +76,29 @@ export function Contact() {
             index="06"
             kicker="Enquiry"
             title="Contact us"
-            text="Send the part, the car, and how to reach you. The form opens WhatsApp with your message ready to send."
+            text="Say whether you need a new part, a second-hand part, or a body panel. The form opens WhatsApp with your message ready to send."
           />
           <form onSubmit={onSubmit} noValidate className="grid gap-4 sm:grid-cols-2">
             <Field id="name" label="Name" value={name} error={errors.name} onChange={setName} autoComplete="name" />
             <Field id="phone" label="Phone Number" value={phone} error={errors.phone} onChange={setPhone} autoComplete="tel" />
             <Field id="email" label="Email" value={email} error={errors.email} onChange={setEmail} autoComplete="email" type="email" />
             <Field id="car" label="Car Model" value={car} onChange={setCar} placeholder="e.g. BMW 3 Series 2020" />
-            <Field id="part" label="Required Part" value={part} error={errors.part} onChange={setPart} className="sm:col-span-2" />
+            <Field id="part" label="Required Part" value={part} error={errors.part} onChange={setPart} />
+            <label className="block text-xs tracking-[0.2em] text-ash uppercase">
+              Stock
+              <span className="relative mt-2 block">
+                <select
+                  id="condition"
+                  value={condition}
+                  onChange={(event) => setCondition(event.target.value)}
+                  className="h-12 w-full appearance-none border border-white/15 bg-ink px-3 text-sm tracking-normal text-white normal-case outline-none focus:border-racing"
+                >
+                  <option value="New">New</option>
+                  <option value="Second-hand">Second-hand</option>
+                  <option value="Either">New or second-hand</option>
+                </select>
+              </span>
+            </label>
             <label className="block text-xs tracking-[0.2em] text-ash uppercase sm:col-span-2">
               Message
               <textarea
@@ -123,7 +141,7 @@ export function Contact() {
             <p className="font-display text-sm tracking-[0.32em] text-racing uppercase">110 Parts</p>
             <h3 className="mt-2 font-display text-5xl leading-[0.9] uppercase">Talk to the counter</h3>
             <p className="mt-4 text-sm leading-relaxed text-silver">
-              Call either line, or message the mobile on WhatsApp. Tell us the vehicle and the part.
+              Call either line, or message the mobile on WhatsApp. Tell us the vehicle, the part, and whether you want it new or second-hand.
             </p>
           </div>
           <div className="space-y-4">

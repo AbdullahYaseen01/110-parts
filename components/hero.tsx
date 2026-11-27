@@ -22,8 +22,8 @@ const floats = [
 ];
 
 const specs = [
-  { k: "Catalogue", v: "Brakes to lighting" },
-  { k: "Fitment", v: "Brand, model, year" },
+  { k: "Stock", v: "New and second-hand" },
+  { k: "Panels", v: "Bumpers, wings, doors" },
   { k: "Contact", v: "Phone and WhatsApp" },
   { k: "Counter", v: "Meek Street, OL2 6HL" },
 ];
@@ -50,14 +50,14 @@ export function Hero() {
           <div className="rise max-w-3xl">
             <p className="inline-flex items-center gap-3 border border-white/15 bg-black/50 px-3 py-1.5 font-display text-sm tracking-[0.32em] text-silver uppercase backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-racing shadow-[0_0_12px_#f20d18]" />
-              110 Parts · Car Parts
+              New · Second-hand · Body panels
             </p>
             <h1 className="mt-5 font-display text-[clamp(2.35rem,8.4vw,6.7rem)] leading-[0.84] font-semibold uppercase">
               <span className="block">The Right Part.</span>
               <span className="metal-red block">The Perfect Drive.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-silver sm:text-lg">
-              Premium quality car parts, reliable performance, and everything your vehicle needs in one place.
+              New parts, checked second-hand parts, and body panels. Bumpers, wings, bonnets, and the mechanical parts that get the car back on the road.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -75,7 +75,7 @@ export function Hero() {
             </div>
             <p className="mt-6 inline-flex items-center gap-3 text-sm text-silver">
               <span className="h-px w-8 bg-racing" />
-              Quality Parts. Reliable Performance.
+              New parts. Second-hand parts. Body panels.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export function Hero() {
             </article>
           ))}
           <article className="flex items-end bg-racing px-3 py-3 font-display text-lg leading-none uppercase">
-            Built for the drive
+            Body panels in stock
           </article>
         </div>
 

@@ -12,6 +12,7 @@ import type { CatalogFilter } from "@/lib/site";
 type Draft = {
   part: string;
   car: string;
+  condition: string;
   nonce: number;
 };
 
@@ -20,14 +21,14 @@ type SiteContextValue = {
   setFilter: (filter: CatalogFilter) => void;
   explore: (filter: CatalogFilter) => void;
   draft: Draft;
-  enquire: (part: string, car?: string) => void;
+  enquire: (part: string, car?: string, condition?: string) => void;
 };
 
 const SiteContext = createContext<SiteContextValue | null>(null);
 
 export function SiteProvider({ children }: { children: ReactNode }) {
   const [filter, setFilter] = useState<CatalogFilter>("all");
-  const [draft, setDraft] = useState<Draft>({ part: "", car: "", nonce: 0 });
+  const [draft, setDraft] = useState<Draft>({ part: "", car: "", condition: "", nonce: 0 });
 
   const value = useMemo<SiteContextValue>(
     () => ({
@@ -38,10 +39,11 @@ export function SiteProvider({ children }: { children: ReactNode }) {
         document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
       },
       draft,
-      enquire: (part, car) => {
+      enquire: (part, car, condition) => {
         setDraft((current) => ({
           part,
           car: car ?? current.car,
+          condition: condition ?? current.condition,
           nonce: current.nonce + 1,
         }));
         document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });

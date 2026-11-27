@@ -11,7 +11,7 @@ const icons = [
 ];
 
 const metrics = [
-  { n: "07", l: "Part families" },
+  { n: "08", l: "Part families" },
   { n: "08", l: "Brands in the finder" },
   { n: "02", l: "Direct phone lines" },
   { n: "01", l: "Oldham counter" },
@@ -25,7 +25,7 @@ export function Why() {
           index="03"
           kicker="The counter"
           title="Why choose us"
-          text="110 Parts is built for people who want the correct component, a fair figure, and a reply that does not wander."
+          text="New parts, second-hand parts, and body panels, with a fair figure and a reply that does not wander."
         />
 
         <div className="border-y border-white/10">

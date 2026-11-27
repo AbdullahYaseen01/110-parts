@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { useSite } from "@/components/site-state";
 
 const spans: Record<CategoryId, string> = {
+  panels: "sm:col-span-2 lg:col-span-4 min-h-[280px] lg:min-h-[340px]",
   brakes: "sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[300px] lg:min-h-[560px]",
   batteries: "min-h-[240px]",
   engine: "min-h-[240px]",
@@ -25,7 +26,7 @@ export function Categories() {
           index="01"
           kicker="Catalogue"
           title="Featured categories"
-          text="Seven families of parts, photographed and ready to explore. Pick a category and jump straight into the matching stock."
+          text="New parts, second-hand parts, and body panels. Pick a category and jump straight into the matching stock."
         />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (

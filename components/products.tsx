@@ -7,6 +7,7 @@ import { useSite } from "@/components/site-state";
 
 const chips: CatalogFilter[] = [
   "all",
+  "panels",
   "brakes",
   "batteries",
   "engine",
@@ -31,7 +32,7 @@ export function Products() {
           index="02"
           kicker="Stock"
           title="Featured products"
-          text="Guide prices for the parts drivers ask for most. Enquire and we will confirm fitment and the final figure."
+          text="New parts, checked second-hand parts, and body panels. Enquire and we will confirm condition, fitment, and the final figure."
         />
 
         <div className="mb-6 flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Filter parts">
@@ -74,6 +75,9 @@ export function Products() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
+                <span className="absolute top-3 left-3 bg-racing px-2 py-1 font-display text-xs tracking-[0.16em] uppercase">
+                  {product.condition === "Either" ? "New or second-hand" : product.condition}
+                </span>
                 <span className="absolute top-0 right-0 h-8 w-8 bg-racing [clip-path:polygon(100%_0,0_0,100%_100%)]" />
                 <span className="absolute bottom-3 left-3 bg-black/75 px-2 py-1 font-display text-sm tracking-widest text-silver uppercase">
                   {product.price}
@@ -87,7 +91,7 @@ export function Products() {
                 </p>
                 <button
                   type="button"
-                  onClick={() => enquire(product.name)}
+                  onClick={() => enquire(product.name, undefined, product.condition)}
                   className="mt-4 inline-flex h-11 items-center justify-center bg-white font-display text-base tracking-[0.16em] text-ink uppercase transition hover:bg-racing hover:text-white"
                 >
                   Enquire Now

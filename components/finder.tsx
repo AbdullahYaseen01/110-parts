@@ -54,7 +54,7 @@ export function Finder() {
           index="04"
           kicker="Fitment"
           title="Find the right parts"
-          text="Match a vehicle, then browse the sample catalogue. Every result can be sent straight into an enquiry."
+          text="Match a vehicle, then browse new parts, second-hand parts, and body panels. Every result can be sent straight into an enquiry."
         />
 
         <form
@@ -180,7 +180,12 @@ export function Finder() {
                 <div>
                   <h3 className="font-display text-2xl leading-none uppercase">{product.name}</h3>
                   <p className="mt-1 text-sm text-ash">{product.description}</p>
-                  <p className="mt-2 font-display text-lg text-silver">{product.price}</p>
+                  <p className="mt-2 font-display text-lg text-silver">
+                    {product.price}
+                    <span className="ml-3 text-sm tracking-[0.14em] text-racing uppercase">
+                      {product.condition === "Either" ? "New or second-hand" : product.condition}
+                    </span>
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -188,6 +193,7 @@ export function Finder() {
                     enquire(
                       product.name,
                       search ? `${search.brand} ${search.model} ${search.year}` : undefined,
+                      product.condition,
                     )
                   }
                   className="col-span-2 h-11 bg-white px-4 font-display tracking-[0.14em] text-ink uppercase transition hover:bg-racing hover:text-white sm:col-span-1"

@@ -18,7 +18,7 @@ export function About() {
             />
           </div>
           <p className="absolute right-4 bottom-4 max-w-[14rem] bg-racing px-4 py-3 font-display text-2xl leading-none uppercase">
-            Quality. Reliability. The right component.
+            New. Second-hand. Body panels.
           </p>
         </div>
         <div>
@@ -26,14 +26,14 @@ export function About() {
             index="05"
             kicker="The house"
             title="About 110 Parts"
-            text="A parts counter that treats fitment as the product."
+            text="New parts, second-hand parts, and body panels from one counter."
           />
           <div className="space-y-4 text-base leading-relaxed text-silver">
             <p>
-              110 Parts helps drivers and workshops find automotive components that match the car in front of them. The focus is simple: quality parts, reliable performance, and a straight path from the question to the component.
+              110 Parts supplies new parts and checked second-hand parts, plus the body panels a repair often needs: bumpers, bonnets, wings, and doors. The job is the same either way. Find the component that fits the car, and be straight about whether it is new or used.
             </p>
             <p>
-              Brake systems, batteries, engine parts, filters, spark plugs, suspension, lighting, and accessories sit in one place. Tell us the brand, model, and year, and we will help narrow it to the part that belongs on that vehicle.
+              Mechanical stock sits beside the panels. Brakes, batteries, engine parts, filters, spark plugs, suspension, and lighting. Tell us the brand, model, and year, and whether you want new or second-hand.
             </p>
             <p>
               The counter is at {address.full}. Call, message, or send the form — the reply is about the part, the fit, and the price.
